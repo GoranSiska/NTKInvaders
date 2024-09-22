@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjdcntoxeqdtg"]
+
+[ext_resource type="Script" path="res://Core/Enemies/Invader.gd" id="1_kbp3w"]
+[ext_resource type="Texture2D" uid="uid://b60qsafyku326" path="res://Assets/Textures/Alpha.png" id="2_2l53s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghs4h"]
+atlas = ExtResource("2_2l53s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_406kc"]
+atlas = ExtResource("2_2l53s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0pql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghs4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_406kc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Invader" type="Node2D"]
+position = Vector2(98, 83)
+script = ExtResource("1_kbp3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_d0pql")
+frame_progress = 0.901427

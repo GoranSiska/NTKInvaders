@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ry07vq1bhhr"]
+
+[ext_resource type="PackedScene" uid="uid://cjdcntoxeqdtg" path="res://Core/Enemies/Invader.tscn" id="1_sr2ys"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = -1
+offset_right = 512.0
+offset_bottom = 448.0
+color = Color(0, 0, 0, 1)
+
+[node name="Invader" parent="." instance=ExtResource("1_sr2ys")]
+
+[node name="Invader2" parent="." instance=ExtResource("1_sr2ys")]
+position = Vector2(137, 84)
