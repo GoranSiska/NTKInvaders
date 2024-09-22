@@ -38,6 +38,7 @@ func add_invader(invader_type: Invader_Type) -> void:
 			invader.sprite_frames = gamma_sprite_sheet
 	var invaders_size: int = self.invaders.size()
 	var x: int = invaders_size % self.width
+	@warning_ignore("integer_division")
 	var y: int = invaders_size / self.width
 	var invader_position: Vector2 = Vector2(x*spacing_x, y*spacing_y)
 	self.add_child(invader)

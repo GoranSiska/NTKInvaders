@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ry07vq1bhhr"]
+[gd_scene load_steps=8 format=3 uid="uid://4ry07vq1bhhr"]
 
 [ext_resource type="Script" path="res://Scenes/Invaders_Wave.gd" id="1_618fs"]
+[ext_resource type="Script" path="res://Core/Player/Player.gd" id="2_u5oao"]
+[ext_resource type="Texture2D" uid="uid://bx0pjjon8wx8q" path="res://Assets/Textures/Player.png" id="3_cr0ep"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_igl8u"]
 normal = Vector2(1, 0)
@@ -52,3 +54,12 @@ position = Vector2(256, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game_Bottom_Boundary"]
 shape = SubResource("WorldBoundaryShape2D_y1plv")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(122, 326)
+script = ExtResource("2_u5oao")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(0, 0.913725, 0.466667, 1)
+position = Vector2(-45, 76)
+texture = ExtResource("3_cr0ep")
