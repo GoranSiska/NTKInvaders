@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4ry07vq1bhhr"]
+[gd_scene load_steps=14 format=3 uid="uid://4ry07vq1bhhr"]
 
 [ext_resource type="Script" path="res://Core/Enemies/Invaders_Wave.gd" id="1_618fs"]
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_irbt1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Core/Enemies/Invader_Explosion.gd" id="4_ag7cj"]
 [ext_resource type="Texture2D" uid="uid://cf8j466veep6n" path="res://Assets/Textures/Invader_Explosion.png" id="5_ukmm3"]
 [ext_resource type="Theme" uid="uid://wxxeqlrhtsy7" path="res://Assets/Resources/invaders_theme.tres" id="7_pkewo"]
+[ext_resource type="PackedScene" uid="uid://cufm031m5bka2" path="res://Core/Enemies/invader_projectile.tscn" id="8_i10dq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_igl8u"]
 normal = Vector2(1, 0)
@@ -19,6 +20,9 @@ normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y1plv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j0bn"]
+size = Vector2(28, 15)
+
 [node name="Game" type="Node2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_irbt1")
@@ -29,7 +33,7 @@ offset_bottom = 448.0
 color = Color(0, 0, 0, 1)
 
 [node name="Invaders_Wave" type="Node2D" parent="."]
-position = Vector2(14520, 100)
+position = Vector2(40, 100)
 script = ExtResource("1_618fs")
 
 [node name="Game_Left_Boundary" type="Area2D" parent="."]
@@ -58,9 +62,19 @@ shape = SubResource("WorldBoundaryShape2D_khylj")
 
 [node name="Game_Bottom_Boundary" type="Area2D" parent="."]
 position = Vector2(256, 400)
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game_Bottom_Boundary"]
 shape = SubResource("WorldBoundaryShape2D_y1plv")
+
+[node name="Invader_Explosion" type="Node2D" parent="."]
+visible = false
+script = ExtResource("4_ag7cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Invader_Explosion"]
+unique_name_in_owner = true
+texture = ExtResource("5_ukmm3")
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(115, 388)
@@ -70,13 +84,13 @@ script = ExtResource("2_u5oao")
 modulate = Color(0, 0.913725, 0.466667, 1)
 texture = ExtResource("3_cr0ep")
 
-[node name="Invader_Explosion" type="Node2D" parent="."]
-visible = false
-script = ExtResource("4_ag7cj")
+[node name="Area2D" type="Area2D" parent="Player"]
+collision_layer = 16
+collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Invader_Explosion"]
-unique_name_in_owner = true
-texture = ExtResource("5_ukmm3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_7j0bn")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -89,3 +103,5 @@ offset_bottom = 57.0
 theme = ExtResource("7_pkewo")
 text = "SCORE:
 000000"
+
+[node name="Invader_Projectile" parent="." instance=ExtResource("8_i10dq")]

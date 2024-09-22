@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NTK Invaders"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -61,7 +61,9 @@ fire={
 2d_physics/layer_2="LR_Boundary"
 2d_physics/layer_3="Invaders"
 2d_physics/layer_4="Top_Boundary"
+2d_physics/layer_5="Player"
 2d_physics/layer_6="Player_Projectiles"
+2d_physics/layer_7="Bottom_Boundary"
 
 [rendering]
 

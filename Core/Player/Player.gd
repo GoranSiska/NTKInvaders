@@ -1,4 +1,4 @@
-extends Node2D
+class_name Player extends Node2D
 
 var player_velocity: int = 200
 var player_projectile_scene: PackedScene = load("res://Core/Player/Player_Projectile.tscn")

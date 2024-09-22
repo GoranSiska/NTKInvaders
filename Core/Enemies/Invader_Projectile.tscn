@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cufm031m5bka2"]
+
+[ext_resource type="Script" path="res://Core/Enemies/Invader_Projectile.gd" id="1_1b4rc"]
+[ext_resource type="SpriteFrames" uid="uid://b122xps2rx30u" path="res://Assets/Resources/Squiggle_Projectile_Sprite_Sheet.res" id="2_7jtci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohpap"]
+size = Vector2(6, 14)
+
+[node name="Invader_Projectile" type="Node2D"]
+script = ExtResource("1_1b4rc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_7jtci")
+frame_progress = 0.686957
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ohpap")

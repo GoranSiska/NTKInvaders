@@ -8,10 +8,13 @@ const spacing_x: int = 32
 const spacing_y: int = 28
 var invaders: Array[Invader] = []
 
-var invaderScene: PackedScene = load("res://Core/Enemies/Invader.tscn")
+var invader_scene: PackedScene = load("res://Core/Enemies/Invader.tscn")
 var alpha_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Alpha_Sprite_Sheet.res")
 var beta_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Beta_Sprite_Sheet.res")
 var gamma_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Gamma_Sprite_Sheet.res")
+
+var projectile_scene: PackedScene = load("res://Core/Enemies/Invader_Projectile.tscn")
+var squiggle_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Squiggle_Projectile_Sprite_Sheet.res")
 
 func _init_wave() -> void:
 	self.position.x = 40
@@ -28,8 +31,14 @@ func _init_wave() -> void:
 		add_invader(Invader_Type.ALPHA)
 		add_invader(Invader_Type.ALPHA)
 
+func add_projectile(_projectile_position: Vector2) -> void:
+	var projectile: Invader_Projectile = projectile_scene.instantiate()
+	projectile.sprite_frames = self.squiggle_sprite_sheet
+	self.owner.add_child(projectile)
+	projectile.set_position(_projectile_position)
+
 func add_invader(invader_type: Invader_Type) -> void:
-	var invader: Invader = invaderScene.instantiate() as Invader
+	var invader: Invader = invader_scene.instantiate() as Invader
 	match (invader_type):
 		Invader_Type.ALPHA:
 			invader.sprite_frames = alpha_sprite_sheet
@@ -86,11 +95,20 @@ func _process(delta: float) -> void:
 	self.invader_frame = ((self.invader_frame + 1) % 2)
 	for i: Invader in self.invaders:
 		i.set_frame(self.invader_frame)
+	
+	if Engine.is_editor_hint():
+		return
+		
 	if is_move_down:
-		print("down")
 		self.position.y+=20
 		self.is_move_down = false;
 	else:
-		print("side")
 		self.position.x+=invader_velocity
-	pass
+
+	var squiggle_attack: bool = randf() > 0.5
+	if squiggle_attack:
+		var index: int = randi_range(0, self.invaders.size()-1)
+		var attacking_invader: Invader = self.invaders[index]
+		self.add_projectile(attacking_invader.global_position)
+
+
