@@ -47,6 +47,7 @@ func add_invader(invader_type: Invader_Type) -> void:
 
 func _on_invader_hit_side() -> void:
 	self.invader_velocity = -self.invader_velocity
+	self.is_move_down = true;
 
 func _ready() -> void:
 	self._init_wave()
@@ -58,15 +59,21 @@ func _ready() -> void:
 var delta_accumulator: float = 0
 var invader_velocity: int = 10
 var invader_frame: int = 0
+var is_move_down: bool = false;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if self.delta_accumulator < 0.5:
+	if self.delta_accumulator < 0.1:
 		self.delta_accumulator+=delta
 		return
 	self.delta_accumulator = 0
+	
 	self.invader_frame = ((self.invader_frame + 1) % 2)
 	for i in self.invaders:
 		i.set_frame(self.invader_frame)
-	self.position.x+=invader_velocity
+	if is_move_down:
+		self.position.y+=20
+		self.is_move_down = false;
+	else:
+		self.position.x+=invader_velocity
 	pass
