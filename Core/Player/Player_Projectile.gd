@@ -6,6 +6,9 @@ var projectile_velocity: int = 400
 
 func _on_collision(area: Area2D) -> void:
 	Bus.player_projectile_hit.emit()
+	if area.get_collision_layer_value(3):
+		if area.get_parent() is Invader:
+			Bus.invader_hit.emit(area.get_parent() as Invader)
 	self.queue_free()
 	
 # Called when the node enters the scene tree for the first time.

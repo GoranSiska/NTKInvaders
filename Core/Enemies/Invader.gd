@@ -12,7 +12,7 @@ func set_frame(frame: int) -> void:
 	self.animated_sprite_2d.frame = frame
 
 func _on_collision(area: Area2D) -> void:
-	if area.collision_layer == 2:
+	if area.get_collision_layer_value(2):
 		Bus.invader_hit_side.emit()
 
 # Called when the node enters the scene tree for the first time.

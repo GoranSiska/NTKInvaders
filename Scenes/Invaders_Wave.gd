@@ -44,15 +44,24 @@ func add_invader(invader_type: Invader_Type) -> void:
 	self.add_child(invader)
 	self.invaders.append(invader)
 	invader.set_position(invader_position)
-# Called when the node enters the scene tree for the first time.
+
+func remove_invader(invader: Invader) -> void:
+	self.invaders.erase(invader)
+	invader.queue_free()
+	if invaders.size() == 0:
+		print("WIN")
 
 func _on_invader_hit_side() -> void:
 	self.invader_velocity = -self.invader_velocity
 	self.is_move_down = true;
 
+func _on_invader_hit(invader: Invader) -> void:
+	self.remove_invader(invader)
+
 func _ready() -> void:
 	self._init_wave()
 	Bus.invader_hit_side.connect(_on_invader_hit_side)
+	Bus.invader_hit.connect(_on_invader_hit)
 	pass # Replace with function body.
 
 
