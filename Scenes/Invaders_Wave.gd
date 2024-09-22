@@ -50,7 +50,19 @@ func _ready() -> void:
 	self._init_wave()
 	pass # Replace with function body.
 
+# Accumulater to lock-step invaders movement and frame change at half a second. 
+var delta_accumulator: float = 0
+var invader_velocity: int = 10
+var invader_frame: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if self.delta_accumulator < 0.5:
+		self.delta_accumulator+=delta
+		return
+	self.delta_accumulator = 0
+	self.invader_frame = ((self.invader_frame + 1) % 2)
+	for i in self.invaders:
+		i.set_frame(self.invader_frame)
+	self.position.x+=invader_velocity
 	pass
