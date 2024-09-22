@@ -45,10 +45,14 @@ func add_invader(invader_type: Invader_Type) -> void:
 	invader.set_position(invader_position)
 # Called when the node enters the scene tree for the first time.
 
+func _on_invader_hit_side() -> void:
+	self.invader_velocity = -self.invader_velocity
 
 func _ready() -> void:
 	self._init_wave()
+	Bus.invader_hit_side.connect(_on_invader_hit_side)
 	pass # Replace with function body.
+
 
 # Accumulater to lock-step invaders movement and frame change at half a second. 
 var delta_accumulator: float = 0

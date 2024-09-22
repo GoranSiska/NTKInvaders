@@ -13,8 +13,7 @@ func set_frame(frame: int) -> void:
 
 func _on_collision(area: Area2D) -> void:
 	if area.collision_layer == 2:
-		#emit change direction
-		pass
+		Bus.invader_hit_side.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
