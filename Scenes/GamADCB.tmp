@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://4ry07vq1bhhr"]
+
+[ext_resource type="Script" path="res://Scenes/Invaders_Wave.gd" id="1_618fs"]
+[ext_resource type="PackedScene" uid="uid://cjdcntoxeqdtg" path="res://Core/Enemies/Invader.tscn" id="1_sr2ys"]
+[ext_resource type="SpriteFrames" uid="uid://d3jmi7o3i4s6e" path="res://Assets/Resources/Gamma_Sprite_Sheet.res" id="3_rl60r"]
+[ext_resource type="SpriteFrames" uid="uid://veg0arot8l80" path="res://Assets/Resources/Betta_Sprite_Sheet.res" id="4_vtth3"]
+[ext_resource type="SpriteFrames" uid="uid://cysrscwbus1dw" path="res://Assets/Resources/Alpha_Sprite_Sheet.res" id="5_1c2f1"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 512.0
+offset_bottom = 448.0
+color = Color(0, 0, 0, 1)
+
+[node name="Invaders_Wave" type="Node2D" parent="."]
+position = Vector2(40, 80)
+script = ExtResource("1_618fs")
+
+[node name="Gamma1" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 0)
+sprite_frames = ExtResource("3_rl60r")
+
+[node name="Beta1" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 30)
+sprite_frames = ExtResource("4_vtth3")
+
+[node name="Beta2" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 60)
+sprite_frames = ExtResource("4_vtth3")
+
+[node name="Alpha1" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 90)
+sprite_frames = ExtResource("5_1c2f1")
+
+[node name="Alpha2" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 120)
+sprite_frames = ExtResource("5_1c2f1")
+
+[node name="Gamma2" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 0)
+sprite_frames = ExtResource("3_rl60r")
+
+[node name="Beta3" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 30)
+sprite_frames = ExtResource("4_vtth3")
+
+[node name="Beta4" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 60)
+sprite_frames = ExtResource("4_vtth3")
+
+[node name="Alpha3" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 90)
+sprite_frames = ExtResource("5_1c2f1")
+
+[node name="Alpha4" parent="Invaders_Wave" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 120)
+sprite_frames = ExtResource("5_1c2f1")

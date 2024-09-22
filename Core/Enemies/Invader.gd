@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+class_name Invader extends Node2D
 
 @export var sprite_frames: SpriteFrames:
 	set(val):
