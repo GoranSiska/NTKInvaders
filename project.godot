@@ -60,6 +60,8 @@ fire={
 
 2d_physics/layer_2="LR_Boundary"
 2d_physics/layer_3="Invaders"
+2d_physics/layer_4="Top_Boundary"
+2d_physics/layer_6="Player_Projectiles"
 
 [rendering]
 
