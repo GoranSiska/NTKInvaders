@@ -32,4 +32,4 @@ script = ExtResource("1_kbp3w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_d0pql")
-frame_progress = 0.901427
+frame_progress = 0.567311

@@ -1,17 +1,123 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ry07vq1bhhr"]
+[gd_scene load_steps=14 format=3 uid="uid://4ry07vq1bhhr"]
 
+[ext_resource type="Texture2D" uid="uid://b60qsafyku326" path="res://Assets/Textures/Alpha.png" id="1_3rsj5"]
 [ext_resource type="PackedScene" uid="uid://cjdcntoxeqdtg" path="res://Core/Enemies/Invader.tscn" id="1_sr2ys"]
+[ext_resource type="Texture2D" uid="uid://culpnfoi5gunr" path="res://Assets/Textures/Beta.png" id="2_rayt7"]
+[ext_resource type="Texture2D" uid="uid://eij8jc21dfba" path="res://Assets/Textures/Gamma.png" id="2_w6y8n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s21c6"]
+atlas = ExtResource("2_w6y8n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hdv1"]
+atlas = ExtResource("2_w6y8n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjbpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s21c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hdv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6p4j"]
+atlas = ExtResource("2_rayt7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7cxv"]
+atlas = ExtResource("2_rayt7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7waxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6p4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7cxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1x7v"]
+atlas = ExtResource("1_3rsj5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n07hl"]
+atlas = ExtResource("1_3rsj5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_or27n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1x7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n07hl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 1)
 
 [node name="Background" type="ColorRect" parent="."]
-anchors_preset = -1
 offset_right = 512.0
 offset_bottom = 448.0
 color = Color(0, 0, 0, 1)
 
-[node name="Invader" parent="." instance=ExtResource("1_sr2ys")]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(40, 80)
 
-[node name="Invader2" parent="." instance=ExtResource("1_sr2ys")]
-position = Vector2(137, 84)
+[node name="Gamma1" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 0)
+sprite_frames = SubResource("SpriteFrames_fjbpn")
+
+[node name="Beta1" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 30)
+sprite_frames = SubResource("SpriteFrames_7waxd")
+
+[node name="Beta2" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 60)
+sprite_frames = SubResource("SpriteFrames_7waxd")
+
+[node name="Alpha1" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 90)
+sprite_frames = SubResource("SpriteFrames_or27n")
+
+[node name="Alpha2" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(0, 120)
+sprite_frames = SubResource("SpriteFrames_or27n")
+
+[node name="Gamma2" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_fjbpn")
+
+[node name="Beta3" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 30)
+sprite_frames = SubResource("SpriteFrames_7waxd")
+
+[node name="Beta4" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 60)
+sprite_frames = SubResource("SpriteFrames_7waxd")
+
+[node name="Alpha3" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 90)
+sprite_frames = SubResource("SpriteFrames_or27n")
+
+[node name="Alpha4" parent="Node2D" instance=ExtResource("1_sr2ys")]
+position = Vector2(40, 120)
+sprite_frames = SubResource("SpriteFrames_or27n")
