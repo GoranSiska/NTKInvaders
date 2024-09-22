@@ -1,7 +1,6 @@
 @tool
 extends Node2D
 
-
 enum Invader_Type {ALPHA, BETA, GAMMA}
 
 const width: int = 11
@@ -15,6 +14,8 @@ var beta_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Beta_Sprite_S
 var gamma_sprite_sheet: SpriteFrames = load("res://Assets/Resources/Gamma_Sprite_Sheet.res")
 
 func _init_wave() -> void:
+	self.position.x = 40
+	self.position.y = 100
 	for i in self.invaders:
 		i.queue_free()
 	self.invaders.resize(0)
@@ -52,8 +53,9 @@ func remove_invader(invader: Invader) -> void:
 		print("WIN")
 
 func _on_invader_hit_side() -> void:
-	self.invader_velocity = -self.invader_velocity
-	self.is_move_down = true;
+	if !self.is_move_down:
+		self.invader_velocity = -self.invader_velocity
+		self.is_move_down = true;
 
 func _on_invader_hit(invader: Invader) -> void:
 	self.remove_invader(invader)
@@ -73,17 +75,19 @@ var is_move_down: bool = false;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if self.delta_accumulator < 0.1:
+	if self.delta_accumulator < 0.5:
 		self.delta_accumulator+=delta
 		return
 	self.delta_accumulator = 0
 	
 	self.invader_frame = ((self.invader_frame + 1) % 2)
-	for i in self.invaders:
+	for i: Invader in self.invaders:
 		i.set_frame(self.invader_frame)
 	if is_move_down:
+		print("down")
 		self.position.y+=20
 		self.is_move_down = false;
 	else:
+		print("side")
 		self.position.x+=invader_velocity
 	pass
