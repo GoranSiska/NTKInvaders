@@ -33,10 +33,13 @@ func add_invader(invader_type: Invader_Type) -> void:
 	match (invader_type):
 		Invader_Type.ALPHA:
 			invader.sprite_frames = alpha_sprite_sheet
+			invader.invader_value = 10
 		Invader_Type.BETA:
+			invader.invader_value = 20
 			invader.sprite_frames = beta_sprite_sheet
 		Invader_Type.GAMMA:
 			invader.sprite_frames = gamma_sprite_sheet
+			invader.invader_value = 30
 	var invaders_size: int = self.invaders.size()
 	var x: int = invaders_size % self.width
 	@warning_ignore("integer_division")

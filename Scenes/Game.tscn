@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://4ry07vq1bhhr"]
+[gd_scene load_steps=12 format=3 uid="uid://4ry07vq1bhhr"]
 
 [ext_resource type="Script" path="res://Core/Enemies/Invaders_Wave.gd" id="1_618fs"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_irbt1"]
 [ext_resource type="Script" path="res://Core/Player/Player.gd" id="2_u5oao"]
 [ext_resource type="Texture2D" uid="uid://bx0pjjon8wx8q" path="res://Assets/Textures/Player.png" id="3_cr0ep"]
 [ext_resource type="Script" path="res://Core/Enemies/Invader_Explosion.gd" id="4_ag7cj"]
 [ext_resource type="Texture2D" uid="uid://cf8j466veep6n" path="res://Assets/Textures/Invader_Explosion.png" id="5_ukmm3"]
+[ext_resource type="Theme" uid="uid://wxxeqlrhtsy7" path="res://Assets/Resources/invaders_theme.tres" id="7_pkewo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_igl8u"]
 normal = Vector2(1, 0)
@@ -19,6 +21,7 @@ normal = Vector2(0, 1)
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 1)
+script = ExtResource("1_irbt1")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 512.0
@@ -26,7 +29,7 @@ offset_bottom = 448.0
 color = Color(0, 0, 0, 1)
 
 [node name="Invaders_Wave" type="Node2D" parent="."]
-position = Vector2(680, 100)
+position = Vector2(14520, 100)
 script = ExtResource("1_618fs")
 
 [node name="Game_Left_Boundary" type="Area2D" parent="."]
@@ -77,10 +80,12 @@ texture = ExtResource("5_ukmm3")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
+[node name="Score_Label" type="RichTextLabel" parent="UI"]
+unique_name_in_owner = true
 offset_left = 82.0
-offset_top = 5.0
-offset_right = 156.0
-offset_bottom = 61.0
+offset_top = 12.0
+offset_right = 191.0
+offset_bottom = 57.0
+theme = ExtResource("7_pkewo")
 text = "SCORE:
 000000"
